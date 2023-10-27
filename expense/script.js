@@ -12,13 +12,22 @@ let currentIncome = 0;
 let totalExpenses = 0;
 let expenseItems = [];
 const darkModeButton = document.getElementById('dark-mode-button');
+const resetButton = document.getElementById('reset-button');
 
 darkModeButton.addEventListener('click', () => {
     document.body.classList.toggle('dark');
 });
 
+resetButton.addEventListener('click', () => {
+    currentIncome = 0;
+    totalExpenses = 0;
+    expenseItems = [];
+    updateIncomeDisplay();
+    updateExpenseList();
+    updateRemainingBalance();
+    saveDataToLocalStorage();
+});
 
-// Load data from local storage if available
 if (localStorage.getItem('expenseTrackerData')) {
     const data = JSON.parse(localStorage.getItem('expenseTrackerData'));
     currentIncome = data.currentIncome;
@@ -141,10 +150,9 @@ function showError(message) {
         errorDiv.remove();
     }, 3000);
 }
-
-// Function to update the expense chart
 function updateExpenseChart() {
     const categories = expenseItems.map(item => item.description);
+   
     const expenseAmounts = expenseItems.map(item => item.amount);
 
     const chartCanvas = document.getElementById('expense-chart');
@@ -157,7 +165,7 @@ function updateExpenseChart() {
         }
 
         window.expenseChart = new Chart(chartContext, {
-            type: 'bar',
+            type: 'pie',
             data: {
                 labels: categories,
                 datasets: [{
@@ -178,8 +186,6 @@ function updateExpenseChart() {
         });
     }
 }
-
-// Load data from local storage if available
 if (localStorage.getItem('expenseTrackerData')) {
     const data = JSON.parse(localStorage.getItem('expenseTrackerData'));
     currentIncome = data.currentIncome;
@@ -187,4 +193,9 @@ if (localStorage.getItem('expenseTrackerData')) {
     expenseItems = data.expenseItems;
     updateExpenseChart();
 }
-
+function checkRemainingBalance() {
+    if (currentIncome < totalExpenses) {
+        alert("Your remaining balance is less than the total expenses. Consider adding more income.");
+    }
+}
+checkRemainingBalance();
