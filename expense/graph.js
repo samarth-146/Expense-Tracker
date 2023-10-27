@@ -1,8 +1,7 @@
-// Function to update the expense chart
-let isPieChart = true; // Initially, show a pie chart
+let isPieChart = true;
 
 function toggleChartType() {
-    isPieChart = !isPieChart; // Toggle the chart type
+    isPieChart = !isPieChart; 
 
     if (isPieChart) {
         document.getElementById('toggle-graph-button').textContent = 'Show Bar Graph';
@@ -16,8 +15,6 @@ function toggleChartType() {
 document.getElementById('toggle-graph-button').addEventListener('click', toggleChartType);
 
 function updateBarGraph() {
-    // Your code to update the chart as a bar graph
-    // Example code:
     const categories = expenseItems.map(item => item.description);
     const expenseAmounts = expenseItems.map(item => item.amount);
 
@@ -54,8 +51,6 @@ function updateBarGraph() {
 }
 
 function updatePieChart() {
-    // Your code to update the chart as a pie chart
-    // Example code:
     const categories = expenseItems.map(item => item.description);
     const expenseAmounts = expenseItems.map(item => item.amount);
 
