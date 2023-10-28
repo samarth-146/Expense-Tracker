@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Expense Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Expense Tracker</h1>
@@ -19,7 +24,7 @@
 
         <div class="section">
             <h2>Expenses</h2>
-            <ul id="expenses-list"></ul>
+            <ul id="expenses-list" class="expense-list"></ul>
             <input type="text" id="expense-description" placeholder="Expense description">
             <input type="number" id="expense-amount" placeholder="Expense amount">
             <button id="add-expense">Add Expense</button>
@@ -33,4 +38,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

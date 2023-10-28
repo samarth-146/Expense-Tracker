@@ -194,8 +194,9 @@ if (localStorage.getItem('expenseTrackerData')) {
     updateExpenseChart();
 }
 function checkRemainingBalance() {
-    if (currentIncome < totalExpenses) {
-        alert("Your remaining balance is less than the total expenses. Consider adding more income.");
+    const remaining = currentIncome - totalExpenses;
+    if (remaining < 0) {
+        alert("Your remaining balance is negative. Please add more income or reduce expenses.");
     }
 }
 checkRemainingBalance();
